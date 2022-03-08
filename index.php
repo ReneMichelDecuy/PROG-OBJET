@@ -21,22 +21,23 @@
 
 
         <?php
-        
-        //ici on creer plein de faux User 
-        //mais en vrai ils sont en BDD
-        $U1 = new User("toto","1234");
-        $U2 = new User("titi","abcd");
-        $U3 = new User("tata","2345");
-        $U4 = new User("tutu","34567");
-        $U5 = new User("tete","abcd");
-
         $TableauUser = array();
+        try {
+            
 
-        array_push($TableauUser,$U1);
-        array_push($TableauUser,$U2);
-        array_push($TableauUser,$U3);
-        array_push($TableauUser,$U4);
-        array_push($TableauUser,$U5);
+            $bdd = new PDO('mysql:host=192.168.65.193;dbname=filmnotation', 'UserWeb', 'UserWeb');
+            $req = "SELECT * from User";
+            $reponses = $bdd->query($req);
+            while ($donnees = $reponses->fetch())
+            {
+                echo '<p>' .$donnees['id']  . "  ". $donnees['login'] . "  ". $donnees['mdp'] . '</p>';
+                array_push($TableauUser,new User($donnees['id'],$donnees['login'],$donnees['mdp']));
+            } 
+
+        } catch (\Throwable $th) {
+        echo $th;
+        }
+        
        
         if(isset($_POST["connexion"])){
 
