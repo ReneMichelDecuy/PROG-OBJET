@@ -1,22 +1,32 @@
-<?php include ("User.php");?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 <?php
-    echo"test de la class USER";
+echo "Chargement Class User";
+class User{
+
+    //Propriété (Private )
+    //Membres
+    private $login_;
+    private $mdp_;
 
 
-    $Q1 = new user("Tata");
-    $Q2 = new user("Titi");
+    //Méthode ( Public )
+    public function __construct($NewLogin,$pass){
+        $this->login_ = $NewLogin;
+        $this->mdp_ = $pass;
+    }
 
-    echo"<p> je suis ".$Q1->getNom()."</p>";
-    echo"<p> je suis ".$Q2->getNom()."</p>";
-?>    
-</body>
-</html>
+    public function getNom(){
+        return $this->login_;
+    }
+
+    public function seConnecter($UnMotDePass){
+        
+        if($UnMotDePass==$this->mdp_){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+}
+highlight_file(__FILE__);
+?>

@@ -1,28 +1,32 @@
 <?php
-echo"chargement de la page user";
+echo "Chargement Class User";
 class User{
 
-    //Propriété (Private)
-    //MEmbres
-    private $Login_;
+    //Propriété (Private )
+    //Membres
+    private $login_;
+    private $mdp_;
 
-    //Methode (Public)
-    public function __construct($NewLogin)
-    {
-        $this->Login_= $NewLogin;
+
+    //Méthode ( Public )
+    public function __construct($NewLogin,$pass){
+        $this->login_ = $NewLogin;
+        $this->mdp_ = $pass;
     }
 
-    public function getNom()
-    {
-        return $this->Login_;
+    public function getNom(){
+        return $this->login_;
     }
 
-    public function connect($Newmdp)
-    {
-        $this->mdp_=$Newmdp;
+    public function seConnecter($UnMotDePass){
         
+        if($UnMotDePass==$this->mdp_){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }
-
-
+highlight_file(__FILE__);
 ?>
