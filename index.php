@@ -1,6 +1,4 @@
-<?php 
-    echo"coucou";
-?>
+<?php include ("User.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +8,15 @@
     <title>Document</title>
 </head>
 <body>
-    
+<?php
+    echo"test de la class USER";
+
+
+    $Q1 = new user("Tata");
+    $Q2 = new user("Titi");
+
+    echo"<p> je suis ".$Q1->getNom()."</p>";
+    echo"<p> je suis ".$Q2->getNom()."</p>";
+?>    
 </body>
 </html>
